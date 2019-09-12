@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@types/isomorphic-fetch": "^0.0.35",
+    "@types/lodash": "^4.14.138",
     "@types/node-fetch": "^2.5.0",
     "copyfiles": "^2.1.1",
     "prettier": "^1.18.2",
