@@ -1,4 +1,11 @@
 {
+  "name": "sping-graphql",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc && copyfiles src/**/*.graphql build",
+    "start": "node ./build/index.js",
+    "dev": "yarn ts-node-dev index.ts"
+  },
   "dependencies": {
     "apollo-boost": "^0.4.4",
     "apollo-server": "^2.9.3",
@@ -13,6 +20,7 @@
   "devDependencies": {
     "@types/isomorphic-fetch": "^0.0.35",
     "@types/node-fetch": "^2.5.0",
+    "copyfiles": "^2.1.1",
     "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
     "ts-node-dev": "^1.0.0-pre.42",
