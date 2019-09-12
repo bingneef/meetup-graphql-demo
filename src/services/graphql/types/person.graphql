@@ -1,0 +1,32 @@
+type Photo {
+  highres_link: String
+  photo_link: String
+  thumb_link: String
+}
+
+type ServiceEntry {
+  identifier: String
+}
+
+type Person {
+  name: String
+  bio: String
+  status: String
+  country: String
+  city: String
+  photo: Photo
+  twitter: Twitter
+  facebook: ServiceEntry
+}
+
+input PersonInput {
+  name: String!
+}
+
+type Query {
+  persons: [Person]
+}
+
+type Mutation {
+  addPerson(input: PersonInput): Person
+}

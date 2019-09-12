@@ -1,0 +1,7 @@
+# Local files
+__LOCAL
+
+# Dev
+build
+node_modules
+yarn-error.log

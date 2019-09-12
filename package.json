@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "apollo-boost": "^0.4.4",
+    "apollo-server": "^2.9.3",
+    "cross-fetch": "^3.0.4",
+    "graphql": "^14.5.4",
+    "graphql-tag": "^2.10.1",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.15",
+    "merge-graphql-schemas": "^1.7.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.35",
+    "@types/node-fetch": "^2.5.0",
+    "prettier": "^1.18.2",
+    "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.42",
+    "typescript": "^3.6.3"
+  }
+}
