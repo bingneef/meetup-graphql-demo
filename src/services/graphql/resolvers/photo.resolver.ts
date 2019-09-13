@@ -20,6 +20,7 @@ export default {
           },
           (_: unknown, converted: string) => {
             if (converted === undefined) {
+              console.log(`No ascii image found generated: ${_}`);
               resolve();
             } else {
               const formatted = converted
