@@ -1,9 +1,22 @@
 import { get, truncate } from "lodash";
+import { pubsub } from "../schema";
 import DataService from "../../data/index";
 import TwitterService from "../../twitter";
-import { Person, PersonSearchArgs, PersonBioArgs } from "../../../types";
+import {
+  Person,
+  PersonInput,
+  PersonSearchArgs,
+  PersonBioArgs
+} from "../../../types";
+
+const PERSON_ADDED = "PERSON_ADDED";
 
 export default {
+  Subscription: {
+    personAdded: {
+      subscribe: () => pubsub.asyncIterator([PERSON_ADDED])
+    }
+  },
   Query: {
     person: async (
       _: unknown,
@@ -23,8 +36,16 @@ export default {
     }
   },
   Mutation: {
-    addPerson: async (_: unknown, args: any, __: unknown, ___: unknown) => {
-      return {};
+    addPerson: async (
+      _: unknown,
+      args: PersonInput,
+      __: unknown,
+      ___: unknown
+    ) => {
+      const service = new DataService();
+      const person = service.addPerson(args.input);
+      pubsub.publish(PERSON_ADDED, { personAdded: person });
+      return person;
     }
   },
   Person: {
@@ -46,7 +67,10 @@ export default {
       __: unknown,
       ___: unknown
     ) => {
-      return truncate(obj.bio, { length: args.size });
+      if (!obj.bio) {
+        return null;
+      }
+      return truncate(obj.bio, { length: args.size || obj.bio.length });
     }
   }
 };

@@ -5,15 +5,15 @@ import fs from "fs";
 import personsData from "./persons.json";
 import { Person } from "../../types/Person";
 
-class DataService {
-  persons = personsData;
+let localPersonsData: Person[] = personsData;
 
+class DataService {
   async fetchPersonsFromRemote() {
     let offset = 0;
     let items = [];
     do {
       const { headers, data } = await axios.get(
-        `https://api.meetup.com/Delft-Developers-Designers/members?sign=true&photo-host=public&page=400&fields=other_services ,messaging_pref, privacy, state, stats, topics&omit=group_profile&offset=${offset}`
+        `https://api.meetup.com/Delft-Developers-Designers/members?sign=true&photo-host=public&page=200&fields=other_services,state&omit=group_profile,is_pro_admin,lat,lon&offset=${offset}`
       );
       offset++;
       items.push(...data.map((item: Person) => camelcaseKeys(item)));
@@ -29,11 +29,12 @@ class DataService {
   }
 
   getPersons() {
-    return take(this.persons, 10);
+    return take(localPersonsData, 10);
   }
 
-  addPerson(person: any) {
-    this.persons = [person, ...this.persons];
+  addPerson(person: Person) {
+    localPersonsData = [person, ...localPersonsData];
+    return person;
   }
 }
 

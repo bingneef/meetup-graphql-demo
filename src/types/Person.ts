@@ -11,15 +11,23 @@ export type Photo = {
 };
 
 export type Person = {
+  id?: number;
   name: string;
   bio: string;
-  status: string;
-  country: string;
-  city: string;
-  photo: Photo;
-  localizedCountryName: string;
-  twitter: Twitter;
-  facebook: ServiceEntry;
+  status?: string;
+  country?: string;
+  city?: string;
+  photo?: Photo;
+  localizedCountryName?: string;
+  twitter?: Twitter;
+  facebook?: ServiceEntry;
+};
+
+export type PersonInput = {
+  input: {
+    name: string;
+    bio: string;
+  };
 };
 
 export type PersonSearchArgs = {

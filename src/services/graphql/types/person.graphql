@@ -15,6 +15,11 @@ type Person {
 
 input PersonInput {
   name: String!
+  bio: String!
+}
+
+type Subscription {
+  personAdded: Person
 }
 
 type Query {
