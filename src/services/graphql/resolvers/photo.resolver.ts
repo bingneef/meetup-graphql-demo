@@ -19,11 +19,15 @@ export default {
             }
           },
           (_: unknown, converted: string) => {
-            const formatted = converted
-              .replace(/ /g, ` `)
-              .replace(/\n/g, `                 `);
+            if (converted === undefined) {
+              resolve();
+            } else {
+              const formatted = converted
+                .replace(/ /g, ` `)
+                .replace(/\n/g, `                 `);
 
-            resolve(`\n ${formatted}`);
+              resolve(`\n ${formatted}`);
+            }
           }
         );
       });
