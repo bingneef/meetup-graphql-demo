@@ -3,9 +3,12 @@ type ServiceEntry {
 }
 
 type Person {
+  # The name of the user, only the first character of the last name is displayed
   name: String
+  # The bio of the user
   bio(size: Int): String
   status: String
+  localizedCountryName: String @deprecated(reason: "Use `country`.")
   country: String
   city: String
   photo: Photo
@@ -24,7 +27,7 @@ type Subscription {
 
 type Query {
   person(name: String!): Person
-  persons: [Person]
+  persons(limit: Int): [Person]
 }
 
 type Mutation {

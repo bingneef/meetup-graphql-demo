@@ -6,7 +6,8 @@ import {
   Person,
   PersonInput,
   PersonSearchArgs,
-  PersonBioArgs
+  PersonBioArgs,
+  Pagination
 } from "../../../types";
 
 const PERSON_ADDED = "PERSON_ADDED";
@@ -30,9 +31,14 @@ export default {
         .getPersons()
         .find(({ name }) => name.toLowerCase() === args.name.toLowerCase());
     },
-    persons: async (_: unknown, __: unknown, ___: unknown, ____: unknown) => {
+    persons: async (
+      _: unknown,
+      args: Pagination,
+      ___: unknown,
+      ____: unknown
+    ) => {
       const service = new DataService();
-      return service.getPersons();
+      return service.getPersons(args.limit);
     }
   },
   Mutation: {

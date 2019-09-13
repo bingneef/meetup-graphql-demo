@@ -28,8 +28,8 @@ class DataService {
     } while (true);
   }
 
-  getPersons() {
-    return take(localPersonsData, 10);
+  getPersons(limit: number = 25) {
+    return take(localPersonsData, limit);
   }
 
   addPerson(person: Person) {
