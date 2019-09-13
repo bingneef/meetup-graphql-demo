@@ -10,6 +10,7 @@
   "dependencies": {
     "apollo-boost": "^0.4.4",
     "apollo-server": "^2.9.3",
+    "asciify-image": "bingneef/asciify-image",
     "axios": "^0.19.0",
     "camelcase-keys": "^6.0.1",
     "cross-fetch": "^3.0.4",

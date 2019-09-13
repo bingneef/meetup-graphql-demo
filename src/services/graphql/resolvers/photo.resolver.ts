@@ -1,33 +1,28 @@
-import imageToAscii from "image-to-ascii";
+import asciify from "asciify-image";
 import { Photo } from "../../../types";
 
 export default {
   Photo: {
-    ascii: async (obj: Photo, args: any, __: unknown, ___: unknown) => {
+    ascii: async (obj: Photo, _: unknown, __: unknown, ___: unknown) => {
       return new Promise((resolve, _) => {
-        imageToAscii(
+        asciify(
           obj.photo_link,
           {
-            colored: false,
-            size: {
-              width: 40
-            },
-            size_options: {
-              screen_size: {
-                width: 40
-              }
-            }
+            fit: "box",
+            color: false,
+            width: 40,
+            format: "string"
           },
-          (_: unknown, converted: string) => {
-            if (converted === undefined) {
-              console.log(`No ascii image found generated: ${_}`);
+          (_: unknown, asciified: string) => {
+            if (asciified === undefined) {
               resolve();
             } else {
-              const formatted = converted
+              const converted = asciified
+                .toString()
                 .replace(/ /g, ` `)
                 .replace(/\n/g, `                 `);
 
-              resolve(`\n ${formatted}`);
+              resolve(`\n ${converted}`);
             }
           }
         );
