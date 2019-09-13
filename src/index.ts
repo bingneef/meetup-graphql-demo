@@ -4,7 +4,8 @@ import { typeDefs, resolvers } from "./services/graphql/schema";
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  playground: true
+  playground: true,
+  introspection: true
 });
 
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
