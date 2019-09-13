@@ -15,6 +15,11 @@ class TwitterService {
           twitter {
             user(identifier: name, identity: "${identifier}") {
               tweetsCount: tweets_count
+              tweets(limit: 10) {
+                createdAt: created_at
+                retweetCount:retweet_count
+                text
+              }
             }
           }
         }

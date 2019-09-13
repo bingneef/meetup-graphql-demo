@@ -1,16 +1,10 @@
-type Photo {
-  highres_link: String
-  photo_link: String
-  thumb_link: String
-}
-
 type ServiceEntry {
   identifier: String
 }
 
 type Person {
   name: String
-  bio: String
+  bio(size: Int): String
   status: String
   country: String
   city: String
@@ -24,6 +18,7 @@ input PersonInput {
 }
 
 type Query {
+  person(name: String!): Person
   persons: [Person]
 }
 

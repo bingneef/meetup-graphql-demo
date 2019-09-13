@@ -1,3 +1,9 @@
+type Tweet {
+  createdAt: String
+  text: String
+  retweetCount: Int
+}
 type Twitter {
   tweetsCount: Int
+  tweets(limit: Int): [Tweet]
 }

@@ -1,7 +1,15 @@
+import { take } from "lodash";
+import { Twitter, Pagination } from "../../../types";
+
 export default {
   Twitter: {
-    tweetsCount: async (obj: any, args: any, __: unknown, ___: unknown) => {
-      return obj.tweetsCount;
+    tweets: async (
+      obj: Twitter,
+      args: Pagination,
+      __: unknown,
+      ___: unknown
+    ) => {
+      return take(obj.tweets, args.limit || 10);
     }
   }
 };
