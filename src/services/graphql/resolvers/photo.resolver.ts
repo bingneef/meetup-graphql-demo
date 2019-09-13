@@ -10,7 +10,7 @@ export default {
           {
             fit: "box",
             color: false,
-            width: 40,
+            width: 42,
             format: "string"
           },
           (_: unknown, asciified: string) => {

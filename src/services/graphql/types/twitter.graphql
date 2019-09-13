@@ -5,6 +5,6 @@ type Tweet {
 }
 type Twitter {
   tweetsCount: Int
-  # The maximal limit is 10 tweets
+  # The number of tweets to receive. The maximal is 10 tweets.
   tweets(limit: Int): [Tweet]
 }

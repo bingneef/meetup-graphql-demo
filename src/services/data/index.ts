@@ -3,7 +3,7 @@ import axios from "axios";
 import camelcaseKeys from "camelcase-keys";
 import fs from "fs";
 import personsData from "./persons.json";
-import { Person } from "../../types/Person";
+import { Person, Pagination } from "../../types/Person";
 
 let localPersonsData: Person[] = personsData;
 
@@ -28,8 +28,11 @@ class DataService {
     } while (true);
   }
 
-  getPersons(limit: number = 25) {
-    return take(localPersonsData, limit);
+  getPersons({ limit = 25, offset = 0 }: Pagination = {}) {
+    if (offset < 0) {
+      offset = 0;
+    }
+    return localPersonsData.slice(offset, limit + offset);
   }
 
   addPerson(person: Person) {

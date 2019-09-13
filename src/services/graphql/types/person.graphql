@@ -3,10 +3,13 @@ type ServiceEntry {
 }
 
 type Person {
-  # The name of the user, only the first character of the last name is displayed
+  # The name of the user, only the first character of the last name is displayed.
   name: String
-  # The bio of the user
-  bio(size: Int): String
+  # The bio of the user.
+  bio(
+    # The maximum number of characters (include ...) to retrieve. Will always return at least 3 characters.
+    size: Int
+  ): String
   status: String
   localizedCountryName: String @deprecated(reason: "Use `country`.")
   country: String
@@ -27,7 +30,12 @@ type Subscription {
 
 type Query {
   person(name: String!): Person
-  persons(limit: Int): [Person]
+  persons(
+    # The number of persons to retrieve.
+    limit: Int
+    # The offset in persons to retrieve.
+    offset: Int
+  ): [Person]
 }
 
 type Mutation {

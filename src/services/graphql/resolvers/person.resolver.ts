@@ -38,7 +38,7 @@ export default {
       ____: unknown
     ) => {
       const service = new DataService();
-      return service.getPersons(args.limit);
+      return service.getPersons(args);
     }
   },
   Mutation: {
