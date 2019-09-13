@@ -29,7 +29,9 @@ export default {
 
       return service
         .getPersons()
-        .find(({ name }) => name.toLowerCase() === args.name.toLowerCase());
+        .find(
+          ({ name }) => ~name.toLowerCase().indexOf(args.name.toLowerCase())
+        );
     },
     persons: async (
       _: unknown,
