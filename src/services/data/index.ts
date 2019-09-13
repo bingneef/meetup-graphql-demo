@@ -1,9 +1,8 @@
-import { take } from "lodash";
 import axios from "axios";
 import camelcaseKeys from "camelcase-keys";
 import fs from "fs";
 import personsData from "./persons.json";
-import { Person, Pagination } from "../../types/Person";
+import { Person, Pagination } from "../../types";
 
 let localPersonsData: Person[] = personsData;
 
