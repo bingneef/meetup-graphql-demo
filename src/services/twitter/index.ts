@@ -9,8 +9,9 @@ const client = new ApolloClient({
 
 class TwitterService {
   async getUser(identifier: string) {
-    const { data } = await client.query({
-      query: gql`
+    try {
+      const { data } = await client.query({
+        query: gql`
         query {
           twitter {
             user(identifier: name, identity: "${identifier}") {
@@ -24,9 +25,12 @@ class TwitterService {
           }
         }
       `
-    });
+      });
 
-    return data.twitter.user;
+      return data.twitter.user;
+    } catch {
+      return null;
+    }
   }
 }
 
