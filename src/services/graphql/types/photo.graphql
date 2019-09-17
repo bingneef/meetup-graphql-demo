@@ -1,6 +1,6 @@
 type Photo {
-  highres_link: String
-  photo_link: String
-  thumb_link: String
+  highresLink: String
+  photoLink: String
+  thumbLink: String
   ascii: String
 }

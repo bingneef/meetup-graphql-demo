@@ -4,29 +4,20 @@ import { Photo } from "../../../types";
 export default {
   Photo: {
     ascii: async (obj: Photo, _: unknown, __: unknown, ___: unknown) => {
-      return new Promise((resolve, _) => {
-        asciify(
-          obj.photo_link,
-          {
-            fit: "box",
-            color: false,
-            width: 42,
-            format: "string"
-          },
-          (_: unknown, asciified: string) => {
-            if (asciified === undefined) {
-              resolve();
-            } else {
-              const converted = asciified
-                .toString()
-                .replace(/ /g, ` `)
-                .replace(/\n/g, `                 `);
-
-              resolve(`\n ${converted}`);
-            }
-          }
-        );
-      });
+      try {
+        const asciified = await asciify(obj.photoLink, {
+          fit: "box",
+          color: false,
+          width: 40,
+          format: "string"
+        });
+        return asciified
+          .toString()
+          .replace(/ /g, ` `)
+          .replace(/\n/g, `         `);
+      } catch {
+        return null;
+      }
     }
   }
 };

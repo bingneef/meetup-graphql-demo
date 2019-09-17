@@ -15,7 +15,9 @@ class DataService {
         `https://api.meetup.com/Delft-Developers-Designers/members?sign=true&photo-host=public&page=200&fields=other_services,state&omit=group_profile,is_pro_admin,lat,lon&offset=${offset}`
       );
       offset++;
-      items.push(...data.map((item: Person) => camelcaseKeys(item)));
+      items.push(
+        ...data.map((item: Person) => camelcaseKeys(item, { deep: true }))
+      );
 
       if (headers["x-total-count"] <= items.length) {
         await fs.writeFileSync(

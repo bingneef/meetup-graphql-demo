@@ -5,9 +5,9 @@ type ServiceEntry = {
 };
 
 export type Photo = {
-  highres_link: string;
-  photo_link: string;
-  thumb_link: string;
+  highresLink: string;
+  photoLink: string;
+  thumbLink: string;
 };
 
 export type Person = {
@@ -27,6 +27,7 @@ export type PersonInput = {
   input: {
     name: string;
     bio: string;
+    photoUrl?: string;
   };
 };
 

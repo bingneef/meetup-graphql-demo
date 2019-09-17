@@ -51,7 +51,19 @@ export default {
       ___: unknown
     ) => {
       const service = new DataService();
-      const person = service.addPerson(args.input);
+      const params = {
+        name: args.input.name,
+        bio: args.input.bio,
+        photo: !!args.input.photoUrl
+          ? {
+              highresLink: args.input.photoUrl,
+              photoLink: args.input.photoUrl,
+              thumbLink: args.input.photoUrl
+            }
+          : undefined
+      };
+
+      const person = service.addPerson(params);
       pubsub.publish(PERSON_ADDED, { personAdded: person });
       return person;
     }
