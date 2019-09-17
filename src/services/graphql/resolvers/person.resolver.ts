@@ -60,6 +60,9 @@ export default {
     country: async (obj: Person, _: any, __: unknown, ___: unknown) => {
       return obj.localizedCountryName;
     },
+    facebook: async (obj: any, _: unknown, __: unknown, ___: unknown) => {
+      return get(obj, "otherServices.facebook", null);
+    },
     twitter: async (obj: any, _: unknown, __: unknown, ___: unknown) => {
       const identifier = get(obj, "otherServices.twitter.identifier", null);
       if (!identifier) {
