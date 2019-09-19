@@ -8,13 +8,16 @@ export default {
         const asciified = await asciify(obj.photoLink, {
           fit: "box",
           color: false,
-          width: 40,
+          width: 44,
           format: "string"
         });
-        return asciified
+        const formatted = asciified
           .toString()
           .replace(/ /g, ` `)
-          .replace(/\n/g, `         `);
+          .replace(/\n/g, ` `);
+
+        return `
+        ${formatted}`;
       } catch {
         return null;
       }
