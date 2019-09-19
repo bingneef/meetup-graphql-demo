@@ -8,7 +8,7 @@ export default {
         const asciified = await asciify(obj.photoLink, {
           fit: "box",
           color: false,
-          width: 44,
+          width: 42,
           format: "string"
         });
         const formatted = asciified
