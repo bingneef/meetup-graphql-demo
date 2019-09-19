@@ -679,7 +679,7 @@ array-flatten@1.1.1:
 
 asciify-image@bingneef/asciify-image:
   version "0.1.5"
-  resolved "https://codeload.github.com/bingneef/asciify-image/tar.gz/dd4ced434480563cc6e1129abab8a5bc74fbd31e"
+  resolved "https://codeload.github.com/bingneef/asciify-image/tar.gz/18ceb29d25bf3f59c5b1fe648b444aac4104ad54"
   dependencies:
     couleurs "^5.0.0"
     jimp "^0.2.28"
