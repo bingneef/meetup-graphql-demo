@@ -26,12 +26,7 @@ export default {
       ____: unknown
     ) => {
       const service = new DataService();
-
-      return service
-        .getPersons()
-        .find(
-          ({ name }) => ~name.toLowerCase().indexOf(args.name.toLowerCase())
-        );
+      return service.findPerson(args);
     },
     persons: async (
       _: unknown,

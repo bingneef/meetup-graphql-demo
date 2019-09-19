@@ -2,7 +2,7 @@ import axios from "axios";
 import camelcaseKeys from "camelcase-keys";
 import fs from "fs";
 import personsData from "./persons.json";
-import { Person, Pagination } from "../../types";
+import { Person, PersonSearchArgs, Pagination } from "../../types";
 
 let localPersonsData: Person[] = personsData;
 
@@ -34,6 +34,12 @@ class DataService {
       offset = 0;
     }
     return localPersonsData.slice(offset, limit + offset);
+  }
+
+  findPerson({ name: argsName }: PersonSearchArgs) {
+    return localPersonsData.find(
+      ({ name }) => ~name.toLowerCase().indexOf(argsName.toLowerCase())
+    );
   }
 
   addPerson(person: Person) {
